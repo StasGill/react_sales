@@ -7,11 +7,15 @@ const Header = () => {
   return (
     <header className="header">
       <Link to={`/`} className="header__logo">
-        <logo>
+        <div>
           <img src={image} alt="logo" />
-        </logo>
+        </div>
       </Link>
-      <button className="header__button">Разместить обьявление</button>
+      {!window.location.href.includes("add") && (
+        <Link to={`/add`} className="header__logo">
+          <button className="header__button">Разместить обьявление</button>{" "}
+        </Link>
+      )}
     </header>
   );
 };

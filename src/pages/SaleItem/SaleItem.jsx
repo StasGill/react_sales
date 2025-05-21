@@ -3,8 +3,9 @@ import "./sale_item.scss";
 import { FaCheckCircle, FaMapMarkerAlt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { products } from "../../data/data.js";
+import { ProductCard } from "../../components/ProductCard/ProductCard.jsx";
 
-const ProductCard = ({ product }) => {
+const ProductCards = ({ product }) => {
   const { id } = useParams();
   const item = products.find((item) => item.id === +id);
 
@@ -24,7 +25,6 @@ const ProductCard = ({ product }) => {
 
         <div className="sale__body">
           <img src={item.image} alt={item.title} className="sale__image" />
-
           <div className="sale__content">
             <h3>Описание:</h3>
             <p>{item.description}</p>
@@ -33,7 +33,31 @@ const ProductCard = ({ product }) => {
             <li>Материал: {item.material}</li>
             <li>Состояние: {item.condition}</li>
           </ul> */}
-            <p className="product__phone">📞 {item.phone}</p>
+            <h3 className="product__h3">{item.price}</h3>
+            <a href={`tel:${item.phone}`} className="product__phone">
+              📞 {item.phone}
+            </a>
+          </div>
+        </div>
+      </div>
+      <h2 className="product__other-header">
+        Другие обьявления в категории : {item.filter}
+      </h2>
+      <div className="goods_container">
+        <div className="goods_item">
+          <div className="products__container">
+            {products
+              .filter((card) => {
+                if (card.filter === item.filter) {
+                  return card;
+                }
+
+                return null;
+              })
+              .map(
+                (product, index) =>
+                  product && <ProductCard key={index} {...product} />
+              )}
           </div>
         </div>
       </div>
@@ -41,4 +65,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default ProductCards;

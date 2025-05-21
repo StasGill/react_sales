@@ -4,11 +4,13 @@
     border-radius: 12px;
     padding: 24px;
     background-color: #fff;
-    max-width: 1100px;
-    margin: 0 auto;
+    margin: 0 auto 30px auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.24);
   }
 
   &__header {
@@ -34,6 +36,10 @@
     align-items: center;
     gap: 8px;
   }
+}
+
+.product__other-header {
+  margin-bottom: 30px;
 }
 
 

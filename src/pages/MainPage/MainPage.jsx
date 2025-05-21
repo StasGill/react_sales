@@ -30,7 +30,9 @@ function MainPage() {
               {products
                 .filter((card) => {
                   if (inputValue) {
-                    return card.title.includes(inputValue);
+                    return card.title
+                      .toLowerCase()
+                      .includes(inputValue.toLowerCase());
                   }
                   if (activeFilter === "Все") {
                     return card;
